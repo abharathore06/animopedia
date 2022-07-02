@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Sidebar from './components/Sidebar/Sidebar';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import AllPets from "./components/Pets/AllPets";
+import Dashboard from "./components/dashboard/dashboard";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Sidebar />
+      {/* <AllPets /> */}
+      <Routes>
+        <Route path="/" element = {<Dashboard/>} />
+        <Route exact path="/pets/all-pets" element = {<AllPets/>} />
+      </Routes>
+    </Router>
   );
 }
 
+// const App = () => {
+//   return ( 
+//     <Router>
+//       <Sidebar/>
+//       <Routes>
+//         <Route exact path='/' element={<Dashboard/>}/>
+//         <Route exact path='/pets/all-pets' element={<AllPets/>}/>
+//       </Routes>
+//     </Router>
+//   )
+// }
 export default App;
